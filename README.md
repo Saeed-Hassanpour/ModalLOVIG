@@ -19,5 +19,5 @@ Modal LOV on Interactive Grid.
 
 1. Download the **[latest release](https://github.com/Saeed-Hassanpour/ModalLOVIG/releases/latest)**
 2. Import plugin **item_type_plugin_ir_saeedhassanpour_modallovig.sql** to your Apex app
-3. Read this blog **[About Plug-in: Modal LOV IG](https://saeedhassanpour.blogspot.co)**
+3. Read this blog **[About Plug-in: Modal LOV IG](https://saeedhassanpour.blogspot.co.uk/2017/08/about-plug-in-modal-lov-ig.html#more)**
 
