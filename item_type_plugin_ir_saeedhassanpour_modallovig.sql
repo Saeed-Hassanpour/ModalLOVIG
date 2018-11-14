@@ -1,3 +1,4 @@
+prompt --application/set_environment
 set define off verify off feedback off
 whenever sqlerror exit sql.sqlcode rollback
 --------------------------------------------------------------------------------
@@ -13,22 +14,17 @@ whenever sqlerror exit sql.sqlcode rollback
 begin
 wwv_flow_api.import_begin (
  p_version_yyyy_mm_dd=>'2016.08.24'
-,p_release=>'5.1.2.00.09'
+,p_release=>'5.1.4.00.08'
 ,p_default_workspace_id=>1681363194291772
-,p_default_application_id=>118
+,p_default_application_id=>154
 ,p_default_owner=>'TEST'
 );
-end;
-/
-prompt --application/ui_types
-begin
-null;
 end;
 /
 prompt --application/shared_components/plugins/item_type/ir_saeedhassanpour_modallovig
 begin
 wwv_flow_api.create_plugin(
- p_id=>wwv_flow_api.id(14591569879638886)
+ p_id=>wwv_flow_api.id(37946510214183792)
 ,p_plugin_type=>'ITEM TYPE'
 ,p_name=>'IR.SAEEDHASSANPOUR.MODALLOVIG'
 ,p_display_name=>'Modal LOV IG'
@@ -88,7 +84,7 @@ wwv_flow_api.create_plugin(
 '    );',
 '    -- Load the CSS',
 '    apex_css.add_file (',
-'    p_name => ''modallovig''',
+'      p_name => ''modallovig''',
 '    , p_directory => p_plugin.file_prefix);',
 '  ',
 '    /********* Retreiving data which uesd in cascade**********/',
@@ -156,11 +152,14 @@ wwv_flow_api.create_plugin(
 '                      id="''||p_item.name||''"                      ',
 '                      name="''||l_page_item_name||''" ',
 '                      data-id ="''||p_item.session_state_name||''"',
-'                      class="popup_lov apex-item-text apex-item-popup-lov js-ignoreChange ig-modal-lov modal-display-value" ',
+'                      class="popup_lov apex-item-text js-ignoreChange modal-display-value" ',
 '                      size="''||p_item.element_width||''" ',
 '                      maxlength="''||p_item.element_max_length||''" ''|| ',
 '                      v_item_attrib||'' ''||l_readonly||'' >''',
 '        );',
+'        ',
+'        --5.1+  : class="popup_lov apex-item-text apex-item-popup-lov js-ignoreChange ig-modal-lov modal-display-value" ',
+'        --18+   : class="popup_lov apex-item-text js-ignoreChange modal-display-value"',
 '        ',
 '    --Open button',
 '    htp.p(''<button class="a-Button a-Button--popupLOV  ig-lov-open"  type="button" >',
@@ -353,8 +352,8 @@ wwv_flow_api.create_plugin(
 ,p_files_version=>568
 );
 wwv_flow_api.create_plugin_attribute(
- p_id=>wwv_flow_api.id(16976232406223290)
-,p_plugin_id=>wwv_flow_api.id(14591569879638886)
+ p_id=>wwv_flow_api.id(40331172740768196)
+,p_plugin_id=>wwv_flow_api.id(37946510214183792)
 ,p_attribute_scope=>'COMPONENT'
 ,p_attribute_sequence=>1
 ,p_display_sequence=>10
@@ -372,22 +371,22 @@ wwv_flow_api.create_plugin_attribute(
 '</ul>'))
 );
 wwv_flow_api.create_plugin_attr_value(
- p_id=>wwv_flow_api.id(16976540895228337)
-,p_plugin_attribute_id=>wwv_flow_api.id(16976232406223290)
+ p_id=>wwv_flow_api.id(40331481229773243)
+,p_plugin_attribute_id=>wwv_flow_api.id(40331172740768196)
 ,p_display_sequence=>10
 ,p_display_value=>'Page in this application'
 ,p_return_value=>'CUR_APP_PAGE'
 );
 wwv_flow_api.create_plugin_attr_value(
- p_id=>wwv_flow_api.id(16976908948229564)
-,p_plugin_attribute_id=>wwv_flow_api.id(16976232406223290)
+ p_id=>wwv_flow_api.id(40331849282774470)
+,p_plugin_attribute_id=>wwv_flow_api.id(40331172740768196)
 ,p_display_sequence=>20
 ,p_display_value=>'Url'
 ,p_return_value=>'URL'
 );
 wwv_flow_api.create_plugin_attribute(
- p_id=>wwv_flow_api.id(16977325845241729)
-,p_plugin_id=>wwv_flow_api.id(14591569879638886)
+ p_id=>wwv_flow_api.id(40332266179786635)
+,p_plugin_id=>wwv_flow_api.id(37946510214183792)
 ,p_attribute_scope=>'COMPONENT'
 ,p_attribute_sequence=>2
 ,p_display_sequence=>20
@@ -395,7 +394,7 @@ wwv_flow_api.create_plugin_attribute(
 ,p_attribute_type=>'PAGE NUMBER'
 ,p_is_required=>true
 ,p_is_translatable=>false
-,p_depending_on_attribute_id=>wwv_flow_api.id(16976232406223290)
+,p_depending_on_attribute_id=>wwv_flow_api.id(40331172740768196)
 ,p_depending_on_has_to_exist=>true
 ,p_depending_on_condition_type=>'EQUALS'
 ,p_depending_on_expression=>'CUR_APP_PAGE'
@@ -406,8 +405,8 @@ wwv_flow_api.create_plugin_attribute(
 '<p>Page - enter the page number or page alias to navigate to. You can also select the page number from the select list.<p>'))
 );
 wwv_flow_api.create_plugin_attribute(
- p_id=>wwv_flow_api.id(16977611622249820)
-,p_plugin_id=>wwv_flow_api.id(14591569879638886)
+ p_id=>wwv_flow_api.id(40332551956794726)
+,p_plugin_id=>wwv_flow_api.id(37946510214183792)
 ,p_attribute_scope=>'COMPONENT'
 ,p_attribute_sequence=>3
 ,p_display_sequence=>30
@@ -415,15 +414,15 @@ wwv_flow_api.create_plugin_attribute(
 ,p_attribute_type=>'TEXT'
 ,p_is_required=>false
 ,p_is_translatable=>false
-,p_depending_on_attribute_id=>wwv_flow_api.id(16976232406223290)
+,p_depending_on_attribute_id=>wwv_flow_api.id(40331172740768196)
 ,p_depending_on_has_to_exist=>true
 ,p_depending_on_condition_type=>'EQUALS'
 ,p_depending_on_expression=>'URL'
 ,p_help_text=>'<p>Enter the URL</p>'
 );
 wwv_flow_api.create_plugin_attribute(
- p_id=>wwv_flow_api.id(16977915762254827)
-,p_plugin_id=>wwv_flow_api.id(14591569879638886)
+ p_id=>wwv_flow_api.id(40332856096799733)
+,p_plugin_id=>wwv_flow_api.id(37946510214183792)
 ,p_attribute_scope=>'COMPONENT'
 ,p_attribute_sequence=>4
 ,p_display_sequence=>40
@@ -451,36 +450,36 @@ wwv_flow_api.create_plugin_attribute(
 '</ul>'))
 );
 wwv_flow_api.create_plugin_attr_value(
- p_id=>wwv_flow_api.id(16978274340256463)
-,p_plugin_attribute_id=>wwv_flow_api.id(16977915762254827)
+ p_id=>wwv_flow_api.id(40333214674801369)
+,p_plugin_attribute_id=>wwv_flow_api.id(40332856096799733)
 ,p_display_sequence=>10
 ,p_display_value=>'Unrestricted'
 ,p_return_value=>'UNRESTRICTED'
 );
 wwv_flow_api.create_plugin_attr_value(
- p_id=>wwv_flow_api.id(16978606854257994)
-,p_plugin_attribute_id=>wwv_flow_api.id(16977915762254827)
+ p_id=>wwv_flow_api.id(40333547188802900)
+,p_plugin_attribute_id=>wwv_flow_api.id(40332856096799733)
 ,p_display_sequence=>20
 ,p_display_value=>'Session'
 ,p_return_value=>'SESSION'
 );
 wwv_flow_api.create_plugin_attr_value(
- p_id=>wwv_flow_api.id(16979075580261058)
-,p_plugin_attribute_id=>wwv_flow_api.id(16977915762254827)
+ p_id=>wwv_flow_api.id(40334015914805964)
+,p_plugin_attribute_id=>wwv_flow_api.id(40332856096799733)
 ,p_display_sequence=>30
 ,p_display_value=>'User'
 ,p_return_value=>'PRIVATE_BOOKMARK'
 );
 wwv_flow_api.create_plugin_attr_value(
- p_id=>wwv_flow_api.id(16979409745263045)
-,p_plugin_attribute_id=>wwv_flow_api.id(16977915762254827)
+ p_id=>wwv_flow_api.id(40334350079807951)
+,p_plugin_attribute_id=>wwv_flow_api.id(40332856096799733)
 ,p_display_sequence=>40
 ,p_display_value=>'Application'
 ,p_return_value=>'PUBLIC_BOOKMARK'
 );
 wwv_flow_api.create_plugin_attribute(
- p_id=>wwv_flow_api.id(16979884797279510)
-,p_plugin_id=>wwv_flow_api.id(14591569879638886)
+ p_id=>wwv_flow_api.id(40334825131824416)
+,p_plugin_id=>wwv_flow_api.id(37946510214183792)
 ,p_attribute_scope=>'COMPONENT'
 ,p_attribute_sequence=>5
 ,p_display_sequence=>50
@@ -494,8 +493,8 @@ wwv_flow_api.create_plugin_attribute(
 '<p>Enter a comma-delimited list of items from this page</p>'))
 );
 wwv_flow_api.create_plugin_attribute(
- p_id=>wwv_flow_api.id(16980133768284666)
-,p_plugin_id=>wwv_flow_api.id(14591569879638886)
+ p_id=>wwv_flow_api.id(40335074102829572)
+,p_plugin_id=>wwv_flow_api.id(37946510214183792)
 ,p_attribute_scope=>'COMPONENT'
 ,p_attribute_sequence=>6
 ,p_display_sequence=>60
@@ -510,8 +509,8 @@ wwv_flow_api.create_plugin_attribute(
 '<p>Enter a comma-delimited list of items or values from this page</p>'))
 );
 wwv_flow_api.create_plugin_attribute(
- p_id=>wwv_flow_api.id(16980497313288073)
-,p_plugin_id=>wwv_flow_api.id(14591569879638886)
+ p_id=>wwv_flow_api.id(40335437647832979)
+,p_plugin_id=>wwv_flow_api.id(37946510214183792)
 ,p_attribute_scope=>'COMPONENT'
 ,p_attribute_sequence=>7
 ,p_display_sequence=>70
@@ -522,8 +521,8 @@ wwv_flow_api.create_plugin_attribute(
 ,p_help_text=>'<p>Enter the request to be used.</p>'
 );
 wwv_flow_api.create_plugin_attribute(
- p_id=>wwv_flow_api.id(16980798194293440)
-,p_plugin_id=>wwv_flow_api.id(14591569879638886)
+ p_id=>wwv_flow_api.id(40335738528838346)
+,p_plugin_id=>wwv_flow_api.id(37946510214183792)
 ,p_attribute_scope=>'COMPONENT'
 ,p_attribute_sequence=>8
 ,p_display_sequence=>80
@@ -538,8 +537,8 @@ wwv_flow_api.create_plugin_attribute(
 '<p>Enter a comma-delimited list of columns from Modal Dialog page</p>'))
 );
 wwv_flow_api.create_plugin_attribute(
- p_id=>wwv_flow_api.id(16981081631310086)
-,p_plugin_id=>wwv_flow_api.id(14591569879638886)
+ p_id=>wwv_flow_api.id(40336021965854992)
+,p_plugin_id=>wwv_flow_api.id(37946510214183792)
 ,p_attribute_scope=>'COMPONENT'
 ,p_attribute_sequence=>9
 ,p_display_sequence=>90
@@ -559,8 +558,8 @@ wwv_flow_api.create_plugin_attribute(
 '<p>Enter a comma-delimited list of first parts then add [:] and last enter a comma-delimited list of second parts also the priority of entering at second part is important</p>'))
 );
 wwv_flow_api.create_plugin_attribute(
- p_id=>wwv_flow_api.id(16981390144314507)
-,p_plugin_id=>wwv_flow_api.id(14591569879638886)
+ p_id=>wwv_flow_api.id(40336330478859413)
+,p_plugin_id=>wwv_flow_api.id(37946510214183792)
 ,p_attribute_scope=>'COMPONENT'
 ,p_attribute_sequence=>10
 ,p_display_sequence=>100
@@ -575,8 +574,8 @@ wwv_flow_api.create_plugin_attribute(
 '<p>Enter a comma-delimited list of columns of Interactive Grid in this page</p>'))
 );
 wwv_flow_api.create_plugin_attribute(
- p_id=>wwv_flow_api.id(16981652217361641)
-,p_plugin_id=>wwv_flow_api.id(14591569879638886)
+ p_id=>wwv_flow_api.id(40336592551906547)
+,p_plugin_id=>wwv_flow_api.id(37946510214183792)
 ,p_attribute_scope=>'COMPONENT'
 ,p_attribute_sequence=>11
 ,p_display_sequence=>110
@@ -595,29 +594,29 @@ wwv_flow_api.create_plugin_attribute(
 ||'nd the modal dialog will open so that the user can make a selection.However, this part has not been implemented yet</p>'))
 );
 wwv_flow_api.create_plugin_attr_value(
- p_id=>wwv_flow_api.id(16981949959363200)
-,p_plugin_attribute_id=>wwv_flow_api.id(16981652217361641)
+ p_id=>wwv_flow_api.id(40336890293908106)
+,p_plugin_attribute_id=>wwv_flow_api.id(40336592551906547)
 ,p_display_sequence=>10
 ,p_display_value=>'Not Enterable'
 ,p_return_value=>'NOT_ENTERABLE'
 );
 wwv_flow_api.create_plugin_attr_value(
- p_id=>wwv_flow_api.id(16982367268364555)
-,p_plugin_attribute_id=>wwv_flow_api.id(16981652217361641)
+ p_id=>wwv_flow_api.id(40337307602909461)
+,p_plugin_attribute_id=>wwv_flow_api.id(40336592551906547)
 ,p_display_sequence=>20
 ,p_display_value=>'Enterable - Restrictred to LOV'
 ,p_return_value=>'ENTERABLE_RESTRICTED'
 );
 wwv_flow_api.create_plugin_attr_value(
- p_id=>wwv_flow_api.id(16982715345366889)
-,p_plugin_attribute_id=>wwv_flow_api.id(16981652217361641)
+ p_id=>wwv_flow_api.id(40337655679911795)
+,p_plugin_attribute_id=>wwv_flow_api.id(40336592551906547)
 ,p_display_sequence=>30
 ,p_display_value=>'Enterable - Not Restrictred to LOV'
 ,p_return_value=>'ENTERABLE_UNRESTRICTED'
 );
 wwv_flow_api.create_plugin_attribute(
- p_id=>wwv_flow_api.id(16983300205381314)
-,p_plugin_id=>wwv_flow_api.id(14591569879638886)
+ p_id=>wwv_flow_api.id(40338240539926220)
+,p_plugin_id=>wwv_flow_api.id(37946510214183792)
 ,p_attribute_scope=>'COMPONENT'
 ,p_attribute_sequence=>12
 ,p_display_sequence=>120
@@ -626,7 +625,7 @@ wwv_flow_api.create_plugin_attribute(
 ,p_is_required=>false
 ,p_default_value=>'N'
 ,p_is_translatable=>false
-,p_depending_on_attribute_id=>wwv_flow_api.id(16981652217361641)
+,p_depending_on_attribute_id=>wwv_flow_api.id(40336592551906547)
 ,p_depending_on_has_to_exist=>true
 ,p_depending_on_condition_type=>'EQUALS'
 ,p_depending_on_expression=>'ENTERABLE_UNRESTRICTED'
@@ -771,8 +770,8 @@ end;
 /
 begin
 wwv_flow_api.create_plugin_file(
- p_id=>wwv_flow_api.id(14688362693679349)
-,p_plugin_id=>wwv_flow_api.id(14591569879638886)
+ p_id=>wwv_flow_api.id(38043303028224255)
+,p_plugin_id=>wwv_flow_api.id(37946510214183792)
 ,p_file_name=>'modallovig.js'
 ,p_mime_type=>'text/javascript'
 ,p_file_charset=>'utf-8'
@@ -789,8 +788,8 @@ end;
 /
 begin
 wwv_flow_api.create_plugin_file(
- p_id=>wwv_flow_api.id(16933278318775432)
-,p_plugin_id=>wwv_flow_api.id(14591569879638886)
+ p_id=>wwv_flow_api.id(40288218653320338)
+,p_plugin_id=>wwv_flow_api.id(37946510214183792)
 ,p_file_name=>'modallovig.css'
 ,p_mime_type=>'text/css'
 ,p_file_charset=>'utf-8'
@@ -865,8 +864,8 @@ end;
 /
 begin
 wwv_flow_api.create_plugin_file(
- p_id=>wwv_flow_api.id(17359388607490690)
-,p_plugin_id=>wwv_flow_api.id(14591569879638886)
+ p_id=>wwv_flow_api.id(40714328942035596)
+,p_plugin_id=>wwv_flow_api.id(37946510214183792)
 ,p_file_name=>'modallovig.min.js'
 ,p_mime_type=>'text/javascript'
 ,p_file_charset=>'utf-8'
