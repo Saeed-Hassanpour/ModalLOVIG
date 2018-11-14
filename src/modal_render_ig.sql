@@ -119,7 +119,7 @@ BEGIN
                       id="'||p_item.name||'"                      
                       name="'||l_page_item_name||'" 
                       data-id ="'||p_item.session_state_name||'"
-                      class="popup_lov apex-item-text apex-item-popup-lov js-ignoreChange ig-modal-lov modal-display-value" 
+                      class="popup_lov apex-item-text js-ignoreChange modal-display-value" 
                       size="'||p_item.element_width||'" 
                       maxlength="'||p_item.element_max_length||'" '|| 
                       v_item_attrib||' '||l_readonly||' >'
